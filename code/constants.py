@@ -1,0 +1,21 @@
+PAD = 0
+UNK = 1
+PAD_WORD = '<PAD>'
+UNK_WORD = '<UNK>'
+BATCH_SIZE = 500
+NUM_LANG = 4
+LANG_DICT = {
+	'eng' : 0,
+	'fra' : 1,
+	'ger' : 2,
+	'jap' : 3,
+	'tel' : 4,
+}
+EMBEDDING_DIM = 302
+OUTPUT_SIZE = 2
+LAMBDA = 0.1
+NUM_WORDS_VOCAB = 40000
+
+HIDDEN_SIZE = 200
+LSTM_DROPOUT = 0.3
+EPOCH = 200

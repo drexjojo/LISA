@@ -1,0 +1,12 @@
+program: main.py
+method: bayes
+metric:
+  name: Test Language Loss
+  goal: minimize
+parameters:
+  learning_rate:
+    min: 0.001
+    max: 0.1
+  
+  optimizer:
+    values: ["adam", "sgd"]
