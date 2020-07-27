@@ -34,7 +34,7 @@ mock==3.0.5
 msgpack-numpy==0.4.3.2
 msgpack==0.6.2
 murmurhash==1.0.0
-nltk==3.4.4
+nltk==3.4.5
 numpy==1.17.5
 nvidia-ml-py3==7.352.0
 pathtools==0.1.2
