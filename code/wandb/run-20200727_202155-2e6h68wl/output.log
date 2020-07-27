@@ -1,0 +1,16 @@
+[INFO] -> Using Device :  cuda
+[INFO] -> Loading Preprocessed Data ...
+Traceback (most recent call last):
+  File "main.py", line 128, in <module>
+    main()
+  File "main.py", line 120, in main
+    embeddings_model, train_loader, valid_loader = load_data(config)
+  File "main.py", line 43, in load_data
+    model_data_french    = torch.load("../data/data_fr_"+DOMAIN+".pt")
+  File "/DATA2/USERS/allen/anaconda3/envs/LISA_env/lib/python3.6/site-packages/torch/serialization.py", line 525, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "/DATA2/USERS/allen/anaconda3/envs/LISA_env/lib/python3.6/site-packages/torch/serialization.py", line 212, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/DATA2/USERS/allen/anaconda3/envs/LISA_env/lib/python3.6/site-packages/torch/serialization.py", line 193, in __init__
+    super(_open_file, self).__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: '../data/data_fr_MUSIC.pt'

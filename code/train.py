@@ -1,4 +1,5 @@
 import torch
+import os
 import wandb
 import time
 import torch.nn as nn
@@ -131,14 +132,21 @@ def eval_epoch(model, valid_data, optimizer, language_loss_func, sentiment_loss_
 
 	return epoch_loss_sentiment, epoch_loss_language,epoch_acc,epoch_precision,epoch_recall,epoch_f1
 
-def train(model,training_data, validation_data, device):
+def train(model,training_data, validation_data, device, config):
 
 	language_loss_func  = nn.CrossEntropyLoss().to(device)
 	sentiment_loss_func = nn.BCEWithLogitsLoss().to(device)
 	optimizer = optim.Adam(model.parameters())
 
-	max_valid_accuracy = 0
-	for epoch_i in range(EPOCH):
+	if MODEL_FILE in os.listdir(MODEL_PREFIX):
+		temp_model = torch.load(MODEL_PREFIX+MODEL_FILE)
+		max_valid_accuracy = temp_model['acc']
+		del(temp_model)
+	
+	else:
+		max_valid_accuracy = 0
+
+	for epoch_i in range(config.EPOCH):
 		print('[ Epoch', epoch_i, ']')
 
 		start = time.time()
@@ -157,14 +165,14 @@ def train(model,training_data, validation_data, device):
 		
 		if valid_accu >= max_valid_accuracy:
 			max_valid_accuracy = valid_accu
-		# 	model_state_dict = model.state_dict()
-		# 	checkpoint = {'model': model_state_dict,
-		# 					'epoch': epoch_i,
-		# 					'acc':valid_accu,
-		# 					'loss':valid_loss_sentiment,
-		# 					'precision':valid_precision,
-		# 					'recall':valid_recall,
-		# 					'f1':valid_f1 }
-		# 	torch.save(checkpoint, SAVE_FILE)
+			model_state_dict = model.state_dict()
+			checkpoint = {
+				'model': model_state_dict,
+				'epoch': epoch_i,
+				'acc':valid_accu,
+				'loss':valid_loss_sentiment,
+				'run_ID': wandb.run.id
+				}
+
+			torch.save(checkpoint, MODEL_PREFIX+MODEL_FILE)
 			print('[INFO] -> The checkpoint file has been updated.')
-		print(max_valid_accuracy)

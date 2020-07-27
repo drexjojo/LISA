@@ -1,0 +1,31 @@
+[INFO] -> Loading Preprocessed Data ...
+[INFO] -> Done.
+[INFO] -> Loading Vocabulary ...
+[INFO] -> Done.
+[INFO] -> Loading MUSE Embeddings ...
+The length of the embedding dictionary %d 92392
+The length of the word2index dictionary %d 92392
+The length of the index2word dictionary %d 92392
+[INFO] -> Done.
+[INFO] -> Using Device :  cuda
+[ Epoch 0 ]
+  - (Training)   :   0%|                                                                                                                                                | 0/20 [00:00<?, ?it/s]/DATA2/USERS/allen/anaconda3/envs/LISA_env/lib/python3.6/site-packages/sklearn/metrics/_classification.py:1221: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+  - (Training)   : 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:02<00:00,  9.99it/s]                                                                                                                                                                                                 - (Training)     Loss_sent:  0.69141 <-> Loss_lang:  1.38783 <-> Accuracy: 51.560 % <-> Precision: 0.442 <-> Recall: 0.514 <-> F1: 0.387 <-> Time Taken : 0.034 min
+  - (Validating)   :   0%|                                                                                                                                               | 0/5 [00:00<?, ?it/s]                                                                                                                                                                                                 - (Validating)   Loss_sent:  0.68299 <-> Loss_lang:  1.26792 <-> Accuracy: 55.846 % <-> Precision: 0.648 <-> Recall: 0.557 <-> F1: 0.474 <-> Time Taken : 0.009 min
+Traceback (most recent call last):
+  File "main.py", line 136, in <module>
+    main()
+  File "main.py", line 124, in main
+    train(model, train_loader, valid_loader, device,config)
+  File "/DATA2/USERS/allen/LISA/code/train.py", line 169, in train
+    torch.save(checkpoint, MODEL_FILE)
+  File "/DATA2/USERS/allen/anaconda3/envs/LISA_env/lib/python3.6/site-packages/torch/serialization.py", line 328, in save
+    _legacy_save(obj, opened_file, pickle_module, pickle_protocol)
+  File "/DATA2/USERS/allen/anaconda3/envs/LISA_env/lib/python3.6/site-packages/torch/serialization.py", line 401, in _legacy_save
+    pickler.dump(obj)
+  File "/DATA2/USERS/allen/anaconda3/envs/LISA_env/lib/python3.6/site-packages/wandb/wandb_config.py", line 256, in __getattr__
+    return self.__getitem__(key)
+  File "/DATA2/USERS/allen/anaconda3/envs/LISA_env/lib/python3.6/site-packages/wandb/wandb_config.py", line 246, in __getitem__
+    return self._items[key]
+KeyError: '__getstate__'

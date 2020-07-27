@@ -1,0 +1,4 @@
+{"Test Accuracy": 51.163120567375884, "Test Sentiment Loss": 0.7163451313972473, "Test Language Loss": 1.9662302255630493, "Objective Loss": 5.365150833129883, "_runtime": 15.936894416809082, "_timestamp": 1595590166.1650143, "_step": 0}
+{"Test Accuracy": 49.98936170212765, "Test Sentiment Loss": 0.7102697134017945, "Test Language Loss": 2.0325081825256346, "Objective Loss": 5.485555744171142, "_runtime": 20.44146490097046, "_timestamp": 1595590170.6695848, "_step": 1}
+{"Test Accuracy": 50.99290780141844, "Test Sentiment Loss": 0.7143519639968872, "Test Language Loss": 1.2631032943725586, "Objective Loss": 3.9549105167388916, "_runtime": 24.81115436553955, "_timestamp": 1595590175.0392742, "_step": 2}
+{"Test Accuracy": 51.0354609929078, "Test Sentiment Loss": 0.7000361800193786, "Test Language Loss": 1.27232666015625, "Objective Loss": 3.9447256565093993, "_runtime": 29.202718496322632, "_timestamp": 1595590179.4308383, "_step": 3}

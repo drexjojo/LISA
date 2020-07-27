@@ -1,0 +1,16 @@
+[INFO] -> Loading Preprocessed Data ...
+[INFO] -> Done.
+[INFO] -> Loading Vocabulary ...
+[INFO] -> Done.
+[INFO] -> Loading MUSE Embeddings ...
+The length of the embedding dictionary %d 92392
+The length of the word2index dictionary %d 92392
+The length of the index2word dictionary %d 92392
+[INFO] -> Done.
+[INFO] -> Using Device :  cuda
+Traceback (most recent call last):
+  File "main.py", line 135, in <module>
+    main()
+  File "main.py", line 123, in main
+    train(model, train_loader, valid_loader, device, config)
+TypeError: train() missing 1 required positional argument: 'run'

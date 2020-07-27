@@ -1,0 +1,31 @@
+wandb_version: 1
+
+BATCH_SIZE:
+  desc: null
+  value: 482
+EPOCH:
+  desc: null
+  value: 128
+HIDDEN_SIZE_LANG:
+  desc: null
+  value: 727
+HIDDEN_SIZE_LSTM:
+  desc: null
+  value: 113
+HIDDEN_SIZE_SENT:
+  desc: null
+  value: 248
+LAMBDA:
+  desc: null
+  value: 0.1775358562747097
+LSTM_DROPOUT:
+  desc: null
+  value: 0.18329332698439826
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.9.3
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    python_version: 3.6.10

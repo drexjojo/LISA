@@ -1,0 +1,29 @@
+{
+    "root": "/DATA2/USERS/allen/LISA",
+    "program": "/DATA2/USERS/allen/anaconda3/envs/LISA_env/bin/wandb",
+    "git": {
+        "remote": "https://github.com/drexjojo/LISA.git",
+        "commit": "ae412dfe284d8aebe4b7b98be9dae43734acaef9"
+    },
+    "email": "allenjantony@gmail.com",
+    "startedAt": "2020-07-25T06:59:03.866012",
+    "host": "GPU",
+    "username": "allen",
+    "executable": "/DATA2/USERS/allen/anaconda3/envs/LISA_env/bin/python",
+    "os": "Linux-4.4.0-184-generic-x86_64-with-debian-stretch-sid",
+    "python": "3.6.10",
+    "gpu": "GeForce GTX 1080 Ti",
+    "gpu_count": 2,
+    "cpu_count": 12,
+    "cuda": "10.0.130",
+    "args": [
+        "agent",
+        "allenantony/lisa/gtij9d0s"
+    ],
+    "state": "finished",
+    "jobType": null,
+    "mode": "run",
+    "project": "lisa",
+    "heartbeatAt": "2020-07-25T07:07:46.370451",
+    "exitcode": 0
+}

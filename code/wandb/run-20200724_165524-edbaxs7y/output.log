@@ -1,0 +1,24 @@
+[INFO] -> Loading Preprocessed Data ...
+[INFO] -> Done.
+[INFO] -> Loading Vocabulary ...
+[INFO] -> Done.
+[INFO] -> Loading MUSE Embeddings ...
+The length of the embedding dictionary %d 92392
+The length of the word2index dictionary %d 92392
+The length of the index2word dictionary %d 92392
+[INFO] -> Done.
+[INFO] -> Using Device :  cuda
+Traceback (most recent call last):
+  File "main.py", line 135, in <module>
+    main()
+  File "main.py", line 123, in main
+    train(model, train_loader, valid_loader, device, config)
+  File "/DATA2/USERS/allen/LISA/code/train.py", line 143, in train
+    max_valid_accuracy = torch.load(MODEL_FILE)["acc"]
+  File "/DATA2/USERS/allen/anaconda3/envs/LISA_env/lib/python3.6/site-packages/torch/serialization.py", line 525, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "/DATA2/USERS/allen/anaconda3/envs/LISA_env/lib/python3.6/site-packages/torch/serialization.py", line 212, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/DATA2/USERS/allen/anaconda3/envs/LISA_env/lib/python3.6/site-packages/torch/serialization.py", line 193, in __init__
+    super(_open_file, self).__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: 'LISA_LR_DE.chkpt'

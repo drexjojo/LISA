@@ -8,10 +8,6 @@ from data_loaders import *
 from get_embeddings import *
 from train import *
 
-
-SAVE_FILE = "../data/trained_models/low_resource_telegu_dvd.chkpt"
-DOMAIN = "dvd"
-
 def print_stats(model_data):
 	print("\n\n\n NAME : ",model_data.name)
 	print("Training data :")
@@ -41,18 +37,7 @@ def get_vocab(data):
 	all_words = set(all_words)
 	return all_words
 		
-def main():
-
-	wandb.init(project="LISA")
-	wandb.watch_called = False
-	config = wandb.config         
-	config.batch_size = BATCH_SIZE
-	config.test_batch_size = BATCH_SIZE
-	config.epochs = EPOCH
-	config.seed = 42
-	config.log_interval = 10
-	torch.manual_seed(config.seed)
-	torch.backends.cudnn.deterministic = True
+def load_data(config):
 
 	print("[INFO] -> Loading Preprocessed Data ...")
 	model_data_french    = torch.load("../data/data_fr_"+DOMAIN+".pt")
@@ -111,7 +96,7 @@ def main():
 	#-----------------------------------------------------
 
 
-	train_loader = DataLoader(train_dset, batch_size = BATCH_SIZE,shuffle = True, num_workers = 10,collate_fn=pack_collate_fn)
+	train_loader = DataLoader(train_dset, batch_size = config.BATCH_SIZE,shuffle = True, num_workers = 10,collate_fn=pack_collate_fn)
 
 	valid_dset = Driver_Data(
 		data = model_data_german.test_data,
@@ -119,25 +104,25 @@ def main():
 		word2index = embeddings_model.word2index,
 		lang_identifier = [LANG_DICT["ger"] for i in range(len(model_data_german.test_data))])
 
-	valid_loader = DataLoader(valid_dset, batch_size = BATCH_SIZE, shuffle = False, num_workers = 10,collate_fn=pack_collate_fn)
+	valid_loader = DataLoader(valid_dset, batch_size = config.BATCH_SIZE, shuffle = False, num_workers = 10,collate_fn=pack_collate_fn)
 
+	return embeddings_model, train_loader, valid_loader
+
+def main():
+
+	wandb.init(project="lisa",config=hyperparameter_defaults)
+	config = wandb.config         
+	torch.manual_seed(SEED)
+	torch.backends.cudnn.deterministic = True
 	device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 	print("[INFO] -> Using Device : ",device)
 
-	model = LSTM_sent_disc(embeddings=embeddings_model.embeddings).to(device)
+	embeddings_model, train_loader, valid_loader = load_data(config)
+
+	model = LISA(embeddings=embeddings_model.embeddings,config=config).to(device)
 	wandb.watch(model, log="all")
 	
-
-	train(model, train_loader, valid_loader, device)
-
-	# print("[INFO] -> Best model")
-	# print("-----------------------")
-	# best_model = torch.load(SAVE_FILE)
-	# print("  -[EPOCH]     : ",best_model["epoch"])
-	# print("  -[ACCURACY]  : ",best_model["acc"])
-	# print("  -[PRECISION]  : ",best_model["precision"])
-	# print("  -[RECALL]  : ",best_model["recall"])
-	# print("  -[f1]  : ",best_model["f1"])
+	train(model, train_loader, valid_loader, device, config)
 
 if __name__ == '__main__':
 	main()

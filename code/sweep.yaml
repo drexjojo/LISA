@@ -1,12 +1,35 @@
 program: main.py
+project: lisa
+name: LR_GER_MUSIC
 method: bayes
 metric:
-  name: Test Language Loss
+  name: Test Sentiment Loss
   goal: minimize
 parameters:
-  learning_rate:
-    min: 0.001
-    max: 0.1
+  HIDDEN_SIZE_LSTM:
+    min: 100
+    max: 512
+
+  HIDDEN_SIZE_LANG:
+    min: 100
+    max: 512
   
-  optimizer:
-    values: ["adam", "sgd"]
+  HIDDEN_SIZE_SENT:
+    min: 100
+    max: 512
+
+  LSTM_DROPOUT:
+    min: 0.1
+    max: 0.4
+  
+  EPOCH:
+    min: 100
+    max: 400
+
+  BATCH_SIZE:
+    min: 256
+    max: 512
+
+  LAMBDA:
+    min: 0.1
+    max: 0.9

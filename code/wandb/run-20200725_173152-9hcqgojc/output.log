@@ -1,0 +1,7 @@
+[INFO] -> Using Device :  cuda
+Traceback (most recent call last):
+  File "main.py", line 129, in <module>
+    main()
+  File "main.py", line 121, in main
+    embeddings_model, train_loader, valid_loader = get_data()
+NameError: name 'get_data' is not defined
