@@ -64,7 +64,7 @@ spacy==2.0.18
 subprocess32==3.5.4
 tensorboard==1.13.1
 tensorflow-estimator==1.13.0
-tensorflow==1.13.1
+tensorflow==2.5.0
 termcolor==1.1.0
 thinc==6.12.1
 threadpoolctl==2.1.0
