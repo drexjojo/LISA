@@ -71,7 +71,7 @@ threadpoolctl==2.1.0
 toolz==0.10.0
 torch==1.4.0
 tqdm==4.42.0
-ujson==1.35
+ujson==5.4.0
 urllib3==1.25.7
 wandb==0.9.3
 watchdog==0.10.0
